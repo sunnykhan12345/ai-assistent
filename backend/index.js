@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import router from "./routes/user.router.js";
+import userRouter from "./routes/user.routes.js";
 dotenv.config();
 connectDB();
 
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 });
 // middleware
 app.use("/api/auth", router);
+app.use("/api/user", userRouter);
 
 // Start server
 app.listen(PORT, () => {
