@@ -23,7 +23,7 @@ export const Signup = () => {
 
       console.log("Signup successful:", response.data);
 
-      navigate("/signin");
+      navigate("/customize");
     } catch (error) {
       console.error(
         "Signup failed:",

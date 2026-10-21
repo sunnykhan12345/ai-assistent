@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// user model
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    // it gsggs
     password: {
       type: String,
       required: true,

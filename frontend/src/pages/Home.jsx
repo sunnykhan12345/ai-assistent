@@ -11,19 +11,13 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
-      console.log("Saved token:", localStorage.getItem("token"));
-      console.log("Server URL:", serverUrl);
       try {
         setLoading(true);
         setError("");
 
-        // Get the logged-in user's data
-        const token = localStorage.getItem("token");
-
+        // Get the logged-in user's data using cookie-based auth
         const response = await axios.get(`${serverUrl}/api/user/current`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          withCredentials: true,
         });
 
         const data = response.data;

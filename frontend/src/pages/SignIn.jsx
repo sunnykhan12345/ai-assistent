@@ -59,18 +59,16 @@ export const SignIn = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${serverUrl}/api/auth/login`, {
-        email: email.trim(),
-        password,
-      });
+      const response = await axios.post(
+        `${serverUrl}/api/auth/login`,
+        {
+          email: email.trim(),
+          password,
+        },
+        { withCredentials: true },
+      );
 
       console.log("Sign in successful:", response.data);
-
-      // Save authentication data if your backend returns a token.
-      // Adjust the property name to match your backend response.
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-      }
 
       navigate("/");
     } catch (error) {

@@ -15,6 +15,7 @@ export const UserContextProvider = ({ children }) => {
       const result = await axios.get(`${serverUrl}/api/user/current`, {
         withCredentials: true,
       });
+      // new
 
       console.log("Current user:", result.data);
       setUserData(result.data);
