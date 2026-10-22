@@ -8,7 +8,9 @@ export const UserContextProvider = ({ children }) => {
 
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [frontendImage, setFrontendImage] = useState(null);
+  const [backendImage, setBackendImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   // Get current logged-in user
   const handleCurrentUser = async () => {
     try {
@@ -39,6 +41,12 @@ export const UserContextProvider = ({ children }) => {
     setUserData,
     loading,
     handleCurrentUser,
+    backendImage,
+    setBackendImage,
+    frontendImage,
+    setFrontendImage,
+    selectedImage,
+    setSelectedImage,
   };
 
   return (

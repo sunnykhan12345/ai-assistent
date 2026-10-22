@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserDataContext } from "../context/UserContext";
 
 const Card = ({ image }) => {
+  const {
+    backendImage,
+    setBackendImage,
+    frontendImage,
+    setFrontendImage,
+    selectedImage,
+    setSelectedImage,
+  } = useContext(UserDataContext);
   return (
-    <div className="w-[150px] h-[250px] bg-[#3a3a50] border-2 border-blue-300 rounded-2xl overflow-hidden ">
+    <div
+      onClick={() => setSelectedImage(image)}
+      className={`w-[150px] h-[250px] bg-[#3a3a50] hover:border-2 border-blue-300 rounded-2xl
+       overflow-hidden transition-all duration-300 hover:shadow-blue-300 hover:shadow-2xl
+        hover:scale-105 cursor-pointer ${selectedImage == image ? "border-2 border-blue-300" : null}`}
+    >
       <img
         src={image}
         alt="AI Assistant"
-        className="w-full h-full object-cover hover:shadow-blue-500 hover:shadow-2xl"
+        className="w-full h-full object-cover"
       />
     </div>
   );
