@@ -9,6 +9,7 @@ import { SignIn } from "./pages/SignIn";
 import { Home } from "./pages/Home";
 import { Custmize } from "./pages/Custmize";
 import { UserDataContext } from "./context/UserContext";
+import { Customize2 } from "./pages/Customize2";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -38,6 +39,10 @@ function App() {
         <Route
           path="/customize"
           element={userData ? <Custmize /> : "/signin"}
+        />
+        <Route
+          path="/customize2"
+          element={userData ? <Customize2 /> : "/signin"}
         />
       </Routes>
     </>

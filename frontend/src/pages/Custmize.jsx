@@ -10,8 +10,10 @@ import img6 from "../assets/img1.webp";
 import img7 from "../assets/img1.webp";
 import { useContext } from "react";
 import { UserDataContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const Custmize = () => {
+  const navigate = useNavigate();
   const {
     backendImage,
     setBackendImage,
@@ -75,19 +77,14 @@ export const Custmize = () => {
         ref={inputImage}
         onChange={handleChange}
       />
-
-      <button
-        onClick={() => {
-          if (backendImage) {
-            console.log("Selected image file:", backendImage);
-          } else {
-            alert("Please upload an image first.");
-          }
-        }}
-        className="mt-5 w-full max-w-[150px] h-10 rounded-[12px] bg-white text-black font-semibold hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Next
-      </button>
+      {selectedImage && (
+        <button
+          className="mt-5 w-full max-w-[150px] h-10 rounded-[12px] bg-white text-black font-semibold hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onClick={() => navigate("/customize2")}
+        >
+          Next
+        </button>
+      )}
     </div>
   );
 };

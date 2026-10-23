@@ -12,7 +12,11 @@ const Card = ({ image }) => {
   } = useContext(UserDataContext);
   return (
     <div
-      onClick={() => setSelectedImage(image)}
+      onClick={() => {
+        setSelectedImage(image);
+        setBackendImage(null);
+        setFrontendImage(null);
+      }}
       className={`w-[150px] h-[250px] bg-[#3a3a50] hover:border-2 border-blue-300 rounded-2xl
        overflow-hidden transition-all duration-300 hover:shadow-blue-300 hover:shadow-2xl
         hover:scale-105 cursor-pointer ${selectedImage == image ? "border-2 border-blue-300" : null}`}
