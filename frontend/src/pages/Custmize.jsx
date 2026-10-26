@@ -38,7 +38,25 @@ export const Custmize = () => {
       <h1 className="text-white text-center pb-4 text-2xl font-semibold">
         Select Your Assistant Image
       </h1>
-
+      <button
+        className="text-white p-10 cursor-pointer"
+        onClick={() => navigate("/")}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
+        </svg>
+      </button>
       <div className="w-[90%] max-w-[70%] flex flex-wrap items-center justify-center mx-auto gap-4">
         <Card image={img1} />
         <Card image={img2} />

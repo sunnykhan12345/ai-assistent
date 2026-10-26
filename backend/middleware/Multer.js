@@ -1,18 +1,18 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import { fileURLToPath } from "url";
 
-// Create uploads folder if it doesn't exist
-const uploadDir = "uploads";
+const uploadDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../uploads",
+);
 
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
+fs.mkdirSync(uploadDir, { recursive: true });
 
-// Configure storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./public");
+    cb(null, uploadDir);
   },
 
   filename: (req, file, cb) => {
@@ -26,7 +26,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// Allow image files only
 const fileFilter = (req, file, cb) => {
   const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
@@ -37,12 +36,11 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Configure multer
 const upload = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5 MB
+    fileSize: 5 * 1024 * 1024,
   },
 });
 
